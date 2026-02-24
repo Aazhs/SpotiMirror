@@ -19,7 +19,7 @@ A real-time, privacy-focused global map that visualizes what people are listenin
 - **Frontend**: React (Vite), Tailwind CSS, Lucide Icons, Leaflet (React-Leaflet).
 - **Backend**: Python (Flask) served via Vercel Serverless Functions.
 - **Database**: Supabase (PostgreSQL) for real-time user status and geolocation.
-- **API**: Spotify Web API for user authentication and music metadata.
+- **API**: [Spotify Web API](https://developer.spotify.com/documentation/web-api) for music metadata and authentication.
 
 ## 🚀 Getting Started
 
@@ -40,9 +40,11 @@ A real-time, privacy-focused global map that visualizes what people are listenin
 2. **Environment Variables**:
    Create a `.env` file in the root directory:
    ```env
-   # Spotify Credentials
+   # Spotify Credentials (from developer.spotify.com)
    SPOTIFY_CLIENT_ID=your_id
    SPOTIFY_CLIENT_SECRET=your_secret
+   # For local dev: http://127.0.0.1:5173/api/callback
+   # For production: https://your-app.vercel.app/api/callback
    SPOTIFY_REDIRECT_URI=http://127.0.0.1:5173/api/callback
 
    # Flask Secret
@@ -72,6 +74,36 @@ A real-time, privacy-focused global map that visualizes what people are listenin
    npm run dev
    ```
 
+## 🎨 Customization
+
+You can easily adapt SpotiMirror to fit your own vision:
+
+### Adjusting Privacy (Location Fuzzing)
+If you want to change how much "fuzz" is added to the user's location, modify the `scale` variable in `src/App.jsx`:
+```javascript
+const generateFuzzOffset = () => {
+    const scale = 0.006; // Increasing this makes the position less accurate (more privacy)
+    return [(Math.random() - 0.5) * scale, (Math.random() - 0.5) * scale];
+};
+```
+
+### Changing the Map Style
+The map uses Leaflet. You can swap the TileLayer URL in `src/App.jsx` to use different styles from providers like Mapbox, Stadia, or CARTO:
+```javascript
+<TileLayer 
+    url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png" 
+    attribution='&copy; CARTO' 
+/>
+```
+
+### Database Schema (Supabase)
+To host this yourself, you'll need a `live_users` table in Supabase with the following columns:
+- `username` (text, primary key)
+- `stats` (jsonb)
+- `last_seen` (int8)
+- `coords` (jsonb)
+- `track` (jsonb)
+
 ## 🌐 Deployment
 
 The project is optimized for deployment on **Vercel**. 
@@ -83,6 +115,7 @@ The project is optimized for deployment on **Vercel**.
 If the app is in "Development Mode" on your Spotify Dashboard:
 1. Go to **User Management**.
 2. Manually whitelist the emails of users you want to allow to log in.
+3. Once ready, apply for a **Quota Extension** on the Spotify Dashboard to go public.
 
 ## 🛡️ Privacy
 
@@ -90,5 +123,13 @@ SpotiMirror was built on the principle of sharing music without sacrificing safe
 - **No storage of personal data**: We don't save your Spotify email or profile name.
 - **Browser-side fuzzing**: The logic to offset your location runs in your browser, so our database never even "sees" your exact house or building.
 
+## ⚖️ Credits & Legal
+
+- **Data Source**: Music data provided by [Spotify](https://www.spotify.com).
+- **Icons**: [Lucide Icons](https://lucide.dev).
+- **Maps**: [Leaflet](https://leafletjs.com) and [CARTO](https://carto.com).
+
+This project is not affiliated with, maintained, or endorsed by Spotify. It is an independent project using the Spotify Web API.
+
 ---
-Built with 💚 for music lovers.
+Built with 💚 by Aarsh Joshi for music lovers.
