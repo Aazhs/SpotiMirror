@@ -2,7 +2,7 @@
 
 A real-time, privacy-focused global map that visualizes what people are listening to on Spotify right now. Discover new music and see the collective vibe of the world through an anonymous, interactive experience.
 
-![SpotiMirror Demo](https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?q=80&w=1200&auto=format&fit=crop)
+[![SpotiMirror Banner](https://images.unsplash.com/photo-1623018035813-9cfb5b502e04?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)](https://github.com/Aazhs/SpotiMirror)
 
 ## ⚡ Features
 
