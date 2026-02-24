@@ -54,6 +54,7 @@ def login():
     return redirect(f"{AUTH_URL}?{urlencode(params)}")
 
 @app.route("/api/callback")
+@app.route("/callback")
 def callback():
     code = request.args.get("code")
     data = {
