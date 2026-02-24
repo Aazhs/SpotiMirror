@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  background-color: #121212;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Fix for Leaflet default marker icons not showing up with some bundlers */
+.leaflet-default-icon-path {
+  background-image: url(https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png);
+}
