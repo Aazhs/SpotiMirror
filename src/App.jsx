@@ -347,6 +347,23 @@ function App() {
                     </div>
                 </div>
             )}
+
+            {/* Spotify Shoutout Overlay */}
+            <a 
+                href="https://open.spotify.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="absolute bottom-6 left-6 z-[1000] flex items-center gap-2 bg-zinc-900/90 backdrop-blur-md border border-zinc-800 rounded-full py-2.5 px-4 shadow-2xl hover:bg-zinc-800 transition-all group pointer-events-auto"
+            >
+                <div className="text-spotify-green">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.501 17.291c-.221.361-.689.469-1.05.249-2.793-1.706-6.307-2.091-10.452-1.143-.411.093-.819-.163-.912-.573-.093-.411.163-.819.573-.912 4.545-1.04 8.441-.595 11.592 1.33.361.221.469.689.249 1.05zm1.472-3.26c-.279.453-.872.599-1.325.32-3.195-1.963-8.067-2.531-11.848-1.383-.509.154-1.052-.136-1.206-.645-.154-.509.136-1.052.645-1.206 4.316-1.31 9.688-.675 13.414 1.614.453.279.599.872.32 1.325zm.126-3.413c-3.832-2.276-10.161-2.486-13.844-1.368-.588.178-1.21-.157-1.388-.745-.178-.588.157-1.21.745-1.388 4.237-1.287 11.219-1.036 15.65 1.594.53.314.7.997.386 1.527-.314.53-.997.7-1.527.386z"/>
+                    </svg>
+                </div>
+                <span className="text-[10px] font-bold text-zinc-400 group-hover:text-zinc-100 transition-colors uppercase tracking-wider">
+                    Shoutouts to <span className="text-spotify-green">Spotify</span> For making API
+                </span>
+            </a>
         </div>
     );
 }
