@@ -304,6 +304,37 @@ function App() {
                             <h2 className="text-3xl font-black text-white tracking-tight">{selectedUser.username}</h2>
                             <p className="text-zinc-500 font-medium">Listening from the map</p>
                         </div>
+
+                        {/* Currently Playing */}
+                        <div className="mb-10">
+                            <div className="mb-4 text-zinc-100 uppercase tracking-widest text-xs font-bold">
+                                <Music size={14} className="inline mr-2 text-spotify-green" /> Now Playing
+                            </div>
+                            {selectedUser.track?.status === 'playing' ? (
+                                <div className="bg-zinc-900/70 rounded-xl p-4 border border-spotify-green/30 flex items-center gap-4 shadow-lg shadow-spotify-green/10">
+                                    <img src={selectedUser.track.album_art} className="w-16 h-16 rounded-lg shadow-md" alt="album art" />
+                                    <div className="overflow-hidden flex-1">
+                                        <p className="text-white font-bold truncate leading-tight text-lg">{selectedUser.track.track_name}</p>
+                                        <p className="text-zinc-400 text-sm truncate mt-1">{selectedUser.track.artist_name}</p>
+                                        <div className="flex items-center gap-2 mt-2">
+                                            <div className="h-2 w-2 rounded-full bg-spotify-green animate-pulse"></div>
+                                            <span className="text-[10px] text-spotify-green font-bold uppercase tracking-wider">Live</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className="bg-zinc-900/30 rounded-xl p-4 border border-zinc-800/50 flex items-center gap-4 opacity-60">
+                                    <div className="w-16 h-16 rounded-lg bg-zinc-800 flex items-center justify-center text-zinc-600">
+                                        <Disc size={24} />
+                                    </div>
+                                    <div className="overflow-hidden flex-1">
+                                        <p className="text-zinc-400 font-medium leading-tight">Not currently playing</p>
+                                        <p className="text-zinc-600 text-xs truncate mt-1">Check back later!</p>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+
                         {/* Top Artists */}
                         <div className="mb-10">
                             <div className="mb-4 text-zinc-100 uppercase tracking-widest text-xs font-bold"><Star size={14} className="inline mr-2 text-spotify-green" /> Top Artists</div>
